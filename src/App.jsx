@@ -1,22 +1,31 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-
-const subject = "React";
+import Course from "./components/Course";
+import Form from "./components/Form";
+import FilterButton from "./components/FilterButton";
 
 function App(props) {
-  const [count, setCount] = useState(0);
-  console.log(props.subject);
+  const CourseList = props.courses?.map((coursep) => (
+    <Course
+      id={coursep.id}
+      name={coursep.name}
+      completed={coursep.completed}
+      key={coursep.id}
+    />
+  ));
   return (
-    <>
-      <header>
-        <h1>Hello Senior {`${subject} :)`}</h1>
-        <button type="button" className="primary">
-          Click Me
-        </button>
-      </header>
-    </>
+    <div className="todoapp stack-large">
+      <h1>NUCES Grade Calculator</h1>
+
+      <div className="filters btn-group stack-exception"></div>
+
+      <h2 id="list-heading">3 tasks remaining</h2>
+      <ul
+        role="list"
+        className="todo-list stack-large stack-exception"
+        aria-labelledby="list-heading"
+      >
+        {CourseList}
+      </ul>
+    </div>
   );
 }
 
