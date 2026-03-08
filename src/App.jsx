@@ -2,6 +2,10 @@ import Course from "./components/Course";
 import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
 
+function onSubmit(name) {
+  console.log(name);
+}
+
 function App(props) {
   const CourseList = props.courses?.map((coursep) => (
     <Course
@@ -14,7 +18,7 @@ function App(props) {
   return (
     <div className="todoapp stack-large">
       <h1>NUCES Grade Calculator</h1>
-      <Form />
+      <Form onSubmit={onSubmit} />
 
       <div className="filters btn-group stack-exception">
         <FilterButton />

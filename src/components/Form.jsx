@@ -1,9 +1,22 @@
-function Form() {
+import { useState } from "react";
+
+function Form(props) {
+  const [entry, setEntry] = useState("");
+
+  function handleChange(event) {
+    setEntry(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    props.onSubmit(entry);
+    setEntry("");
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2 className="label-wrapper">
         <label htmlFor="new-todo-input" className="label__lg">
-          What needs to be done?
+          Add Course Details
         </label>
       </h2>
       <input
@@ -12,6 +25,8 @@ function Form() {
         className="input input__lg"
         name="text"
         autoComplete="off"
+        value={entry}
+        onChange={handleChange}
       />
       <button type="submit" className="btn btn__primary btn__lg">
         Add
