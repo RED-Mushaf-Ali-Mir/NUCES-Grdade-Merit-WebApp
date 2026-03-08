@@ -1,18 +1,27 @@
 import Course from "./components/Course";
 import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
-
-function onSubmit(name) {
-  console.log(name);
-}
+import { useState } from "react";
+import { nanoid } from "nanoid";
 
 function App(props) {
-  const CourseList = props.courses?.map((coursep) => (
+  const [courses, setCourses] = useState(props.courses);
+
+  function onSubmit(name) {
+    const newCourse = {
+      id: `todo-${nanoid()}`,
+      name: name,
+      completed: false,
+    };
+    setCourses([...courses, newCourse]);
+  }
+
+  const CourseList = courses?.map((course) => (
     <Course
-      id={coursep.id}
-      name={coursep.name}
-      completed={coursep.completed}
-      key={coursep.id}
+      id={course.id}
+      name={course.name}
+      completed={course.completed}
+      key={course.id}
     />
   ));
   return (
@@ -26,7 +35,7 @@ function App(props) {
         <FilterButton />
       </div>
 
-      <h2 id="list-heading">3 tasks remaining</h2>
+      <h2 id="list-heading">{`Course Added ${CourseList.length}`}</h2>
       <ul
         role="list"
         className="todo-list stack-large stack-exception"

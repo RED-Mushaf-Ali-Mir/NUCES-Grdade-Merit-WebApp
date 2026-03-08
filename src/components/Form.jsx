@@ -9,7 +9,9 @@ function Form(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    props.onSubmit(entry);
+    if (entry.replace(/\s/g, "").length !== 0) {
+      props.onSubmit(entry);
+    }
     setEntry("");
   }
   return (
