@@ -14,8 +14,13 @@ function App(props) {
   return (
     <div className="todoapp stack-large">
       <h1>NUCES Grade Calculator</h1>
+      <Form />
 
-      <div className="filters btn-group stack-exception"></div>
+      <div className="filters btn-group stack-exception">
+        <FilterButton />
+        <FilterButton />
+        <FilterButton />
+      </div>
 
       <h2 id="list-heading">3 tasks remaining</h2>
       <ul
