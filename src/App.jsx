@@ -7,6 +7,21 @@ import { nanoid } from "nanoid";
 function App(props) {
   const [courses, setCourses] = useState(props.courses);
 
+  function toggleCourse(id) {
+    const updateCourse = courses.map((course) => {
+      if (course.id === id) {
+        return { ...course, completed: !course.completed };
+      }
+      return course;
+    });
+    console.log(courses);
+    setCourses(updateCourse);
+  }
+  function deleteCourse(id) {
+    const updatedCourse = courses.filter((course) => id !== course.id);
+    setCourses(updatedCourse);
+  }
+
   function onSubmit(name) {
     const newCourse = {
       id: `todo-${nanoid()}`,
@@ -22,6 +37,8 @@ function App(props) {
       name={course.name}
       completed={course.completed}
       key={course.id}
+      toggleCourse={toggleCourse}
+      deleteCourse={deleteCourse}
     />
   ));
   return (

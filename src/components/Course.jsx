@@ -2,7 +2,14 @@ function Course(props) {
   return (
     <li className="todo stack-small">
       <div className="c-cb">
-        <input id={props.id} type="checkbox" defaultChecked={props.Completed} />
+        <input
+          id={props.id}
+          type="checkbox"
+          defaultChecked={props.Completed}
+          onChange={() => {
+            props.toggleCourse(props.id);
+          }}
+        />
         <label className="todo-label" htmlFor={props.id}>
           {props.name}
         </label>
@@ -11,7 +18,13 @@ function Course(props) {
         <button type="button" className="btn">
           Edit <span className="visually-hidden">{props.name}</span>
         </button>
-        <button type="button" className="btn btn__danger">
+        <button
+          type="button"
+          className="btn btn__danger"
+          onClick={() => {
+            props.deleteCourse(props.id);
+          }}
+        >
           Delete <span className="visually-hidden">{props.name}</span>
         </button>
       </div>
