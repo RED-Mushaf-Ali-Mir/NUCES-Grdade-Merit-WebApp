@@ -7,6 +7,15 @@ import { nanoid } from "nanoid";
 function App(props) {
   const [courses, setCourses] = useState(props.courses);
 
+  function editCourse(name, id) {
+    const editedCourse = courses.map((course) => {
+      if (id === course.id) return { ...course, name: name };
+
+      return course;
+    });
+    setCourses(editedCourse);
+  }
+
   function toggleCourse(id) {
     const updateCourse = courses.map((course) => {
       if (course.id === id) {
@@ -22,15 +31,16 @@ function App(props) {
     setCourses(updatedCourse);
   }
 
-  function onSubmit(name) {
+  function onSubmit(name, crd, grade) {
     const newCourse = {
       id: `todo-${nanoid()}`,
       name: name,
       completed: false,
+      crditHour: crd,
+      grade: grade,
     };
     setCourses([...courses, newCourse]);
   }
-
   const CourseList = courses?.map((course) => (
     <Course
       id={course.id}
@@ -39,6 +49,7 @@ function App(props) {
       key={course.id}
       toggleCourse={toggleCourse}
       deleteCourse={deleteCourse}
+      editCourse={editCourse}
     />
   ));
   return (
@@ -46,11 +57,11 @@ function App(props) {
       <h1>NUCES Grade Calculator</h1>
       <Form onSubmit={onSubmit} />
 
-      <div className="filters btn-group stack-exception">
+      {/* <div className="filters btn-group stack-exception">
         <FilterButton />
         <FilterButton />
         <FilterButton />
-      </div>
+      </div> */}
 
       <h2 id="list-heading">{`Course Added ${CourseList.length}`}</h2>
       <ul

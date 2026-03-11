@@ -292,4 +292,57 @@ body {
 .c-cb > input[type="checkbox"]:checked + label::after {
   opacity: 1;
 }
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hidden menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  border: 2px solid #4d4d4d;
+  z-index: 1;
+}
+
+/* Links inside dropdown */
+.dropdown-content a {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+/* SHOW on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* text input grows, dropdowns stay small */
+.course-input {
+  flex: 1;
+  width: auto;
+  margin-bottom: 0;
+
+  padding: 0.6rem 1rem;
+  font-size: 1.6rem;
+
+  line-height: 1; /* ⭐ key fix */
+  height: 4rem; /* explicit control */
+}
+
+/* small dropdown buttons */
+.dropdown.small .btn {
+  padding: 1.4rem 1.8rem; /* bigger click area */
+  font-size: 1.8rem;
+  font-weight: 500;
+}
 /* End checkbox styles */
