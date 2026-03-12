@@ -48,21 +48,23 @@ function Course(props) {
         <label className="todo-label" htmlFor={props.id}>
           New name for {props.name}
         </label>
-        <input
-          id={props.id}
-          className="todo-text"
-          type="text"
-          value={newName}
-          onChange={handleChange}
-        />
-        <div className="dropdown small">
-          <button className="btn">{newGrade}</button>
-          <div className="dropdown-content">{updatedGrades}</div>
-        </div>
+        <div className="form-row">
+          <input
+            id={props.id}
+            className="todo-text"
+            type="text"
+            value={newName}
+            onChange={handleChange}
+          />
+          <div className="dropdown small">
+            <button className="btn">{newGrade}</button>
+            <div className="dropdown-content">{updatedGrades}</div>
+          </div>
 
-        <div className="dropdown small">
-          <button className="btn">{newCredit}</button>
-          <div className="dropdown-content">{updatedCredit}</div>
+          <div className="dropdown small">
+            <button className="btn">{newCredit}</button>
+            <div className="dropdown-content">{updatedCredit}</div>
+          </div>
         </div>
       </div>
       <div className="btn-group">

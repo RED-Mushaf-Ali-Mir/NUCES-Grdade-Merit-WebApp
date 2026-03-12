@@ -70,8 +70,9 @@ function App(props) {
         <FilterButton />
         <FilterButton />
       </div> */}
-
+      <h2 id="list-heading">{`GPA : ${CourseList.length}`}</h2>
       <h2 id="list-heading">{`Course Added ${CourseList.length}`}</h2>
+
       <ul
         role="list"
         className="todo-list stack-large stack-exception"
