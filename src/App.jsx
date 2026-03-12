@@ -7,9 +7,15 @@ import { nanoid } from "nanoid";
 function App(props) {
   const [courses, setCourses] = useState(props.courses);
 
-  function editCourse(name, id) {
+  function editCourse(name, id, newGrade, newCredit) {
     const editedCourse = courses.map((course) => {
-      if (id === course.id) return { ...course, name: name };
+      if (id === course.id)
+        return {
+          ...course,
+          name: name,
+          grade: newGrade,
+          creditHour: newCredit,
+        };
 
       return course;
     });
@@ -23,9 +29,9 @@ function App(props) {
       }
       return course;
     });
-    console.log(courses);
     setCourses(updateCourse);
   }
+
   function deleteCourse(id) {
     const updatedCourse = courses.filter((course) => id !== course.id);
     setCourses(updatedCourse);

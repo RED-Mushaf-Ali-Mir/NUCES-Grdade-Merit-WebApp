@@ -1,8 +1,31 @@
 import { useState } from "react";
+import Credits from "./Credit";
+import Grades from "./Grades";
+
+const grades = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F"];
+const credits = ["3", "2", "1"];
 
 function Course(props) {
   const [Editing, setEditing] = useState(false);
   const [newName, setNewName] = useState("");
+  const [newGrade, setNewGrade] = useState(props.grade);
+  const [newCredit, setNewCredit] = useState(props.creditHour);
+
+  function gradeSelection(value) {
+    setNewGrade(value);
+  }
+
+  function creditSelection(value) {
+    setNewCredit(value);
+  }
+
+  const updatedGrades = grades.map((tmpgrade) => {
+    return <Grades btnGrade={tmpgrade} gradeSelection={gradeSelection} />;
+  });
+
+  const updatedCredit = credits.map((crd) => {
+    return <Credits btnCrd={crd} creditSelection={creditSelection} />;
+  });
 
   function handleChange(event) {
     setNewName(event.target.value);
@@ -10,7 +33,11 @@ function Course(props) {
 
   function handleSave(event) {
     event.preventDefault();
-    props.editCourse(newName, props.id);
+    if (newName.replace(/\s/g, "").length === 0) {
+      props.editCourse("Course", props.id, newGrade, newCredit);
+    } else {
+      props.editCourse(newName, props.id, newGrade, newCredit);
+    }
     setNewName("");
     setEditing(false);
   }
@@ -28,6 +55,15 @@ function Course(props) {
           value={newName}
           onChange={handleChange}
         />
+        <div className="dropdown small">
+          <button className="btn">{newGrade}</button>
+          <div className="dropdown-content">{updatedGrades}</div>
+        </div>
+
+        <div className="dropdown small">
+          <button className="btn">{newCredit}</button>
+          <div className="dropdown-content">{updatedCredit}</div>
+        </div>
       </div>
       <div className="btn-group">
         <button

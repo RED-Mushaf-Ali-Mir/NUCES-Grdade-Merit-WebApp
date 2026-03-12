@@ -1,12 +1,23 @@
 import { use, useState } from "react";
+import Grades from "./Grades";
+import Credits from "./Credit";
 
 const grades = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F"];
+const credits = ["3", "2", "1"];
 
 function Form(props) {
   const [entry, setEntry] = useState("");
   const [grade, setGrade] = useState("Grade");
   const [crdhr, setCrdhr] = useState("Credit");
   const [errPlacehl, seterrPlacehl] = useState("");
+
+  function gradeSelection(value) {
+    setGrade(value);
+  }
+
+  function creditSelection(value) {
+    setCrdhr(value);
+  }
 
   function handleChange(event) {
     setEntry(event.target.value);
@@ -26,84 +37,54 @@ function Form(props) {
     setCrdhr("Credit");
     setGrade("Grade");
   }
+
+  const updatedGrades = grades.map((tmpgrade) => {
+    return <Grades btnGrade={tmpgrade} gradeSelection={gradeSelection} />;
+  });
+
+  const updatedCredit = credits.map((crd) => {
+    return <Credits btnCrd={crd} creditSelection={creditSelection} />;
+  });
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h2 className="label-wrapper">
-        <label htmlFor="new-todo-input" className="label__lg">
-          Add Course Details
-        </label>
-      </h2>
+    <>
+      <form onSubmit={handleSubmit}>
+        <h2 className="label-wrapper">
+          <label htmlFor="new-todo-input" className="label__lg">
+            Add Course Details
+          </label>
+        </h2>
 
-      <div className="form-row">
-        <input
-          type="text"
-          id="new-todo-input"
-          className="input input__lg"
-          name="text"
-          autoComplete="off"
-          value={entry}
-          onChange={handleChange}
-          placeholder={errPlacehl}
-        />
+        <div className="form-row">
+          <input
+            type="text"
+            id="new-todo-input"
+            className="input input__lg"
+            name="text"
+            autoComplete="off"
+            value={entry}
+            onChange={handleChange}
+            placeholder={errPlacehl}
+          />
 
-        <div className="dropdown small">
-          <button className="btn">{crdhr}</button>
-          <div className="dropdown-content">
-            <a onClick={() => setCrdhr("1")} className="btn">
-              1
-            </a>
-            <a onClick={() => setCrdhr("2")} className="btn">
-              2
-            </a>
-            <a className="btn" onClick={() => setCrdhr("3")}>
-              3
-            </a>
+          <div className="dropdown small">
+            <button className="btn">{crdhr}</button>
+            <div className="dropdown-content">{updatedCredit}</div>
+          </div>
+
+          <div className="dropdown small">
+            <button className="btn">{grade}</button>
+            <div className="dropdown-content">{updatedGrades}</div>
           </div>
         </div>
-
-        <div className="dropdown small">
-          <button className="btn">{grade}</button>
-          <div className="dropdown-content">
-            <a onClick={() => setGrade("A+")} className="btn">
-              A+
-            </a>
-            <a onClick={() => setGrade("A")} className="btn">
-              A
-            </a>
-            <a onClick={() => setGrade("A-")} className="btn">
-              A-
-            </a>
-            <a onClick={() => setGrade("B+")} className="btn">
-              B+
-            </a>
-            <a onClick={() => setGrade("B")} className="btn">
-              B
-            </a>
-            <a onClick={() => setGrade("B-")} className="btn">
-              B-
-            </a>
-            <a onClick={() => setGrade("C+")} className="btn">
-              C+
-            </a>
-            <a onClick={() => setGrade("C")} className="btn">
-              C
-            </a>
-            <a onClick={() => setGrade("C-")} className="btn">
-              C-
-            </a>
-            <a onClick={() => setGrade("D")} className="btn">
-              D
-            </a>
-            <a onClick={() => setGrade("F")} className="btn">
-              F
-            </a>
-          </div>
-        </div>
+        <button type="submit" className="btn btn__primary btn__lg">
+          Add
+        </button>
+      </form>
+      <div className="calculate-Btn">
+        <button className="btn  btn__lg">Calculate GPA</button>
       </div>
-      <button type="submit" className="btn btn__primary btn__lg">
-        Add
-      </button>
-    </form>
+    </>
   );
 }
 
