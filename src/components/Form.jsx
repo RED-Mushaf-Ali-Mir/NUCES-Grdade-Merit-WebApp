@@ -1,5 +1,7 @@
 import { use, useState } from "react";
 
+const grades = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F"];
+
 function Form(props) {
   const [entry, setEntry] = useState("");
   const [grade, setGrade] = useState("Grade");
