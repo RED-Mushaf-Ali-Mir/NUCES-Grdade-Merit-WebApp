@@ -36,7 +36,7 @@ function App(props) {
       id: `todo-${nanoid()}`,
       name: name,
       completed: false,
-      crditHour: crd,
+      creditHour: crd,
       grade: grade,
     };
     setCourses([...courses, newCourse]);
@@ -47,6 +47,8 @@ function App(props) {
       name={course.name}
       completed={course.completed}
       key={course.id}
+      grade={course.grade}
+      creditHour={course.creditHour}
       toggleCourse={toggleCourse}
       deleteCourse={deleteCourse}
       editCourse={editCourse}

@@ -81,10 +81,10 @@ body {
   padding: 0.8rem 1rem 0.7rem;
   text-transform: capitalize;
 }
-.btn.toggle-btn {
+/* .btn.toggle-btn {
   border-color: lightgray;
   border-width: 1px;
-}
+} */
 .btn.toggle-btn[aria-pressed="true"] {
   border-color: #4d4d4d;
   text-decoration: underline;
@@ -225,7 +225,7 @@ body {
 }
 /* End todo item styles */
 /* Checkbox styles */
-.c-cb {
+/* .c-cb {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   clear: left;
@@ -237,23 +237,23 @@ body {
   min-height: 44px;
   padding-left: 40px;
   position: relative;
-}
-.c-cb > label::before,
+} */
+/* .c-cb > label::before,
 .c-cb > input[type="checkbox"] {
   box-sizing: border-box;
   height: 44px;
   left: -2px;
   top: -2px;
   width: 44px;
-}
-.c-cb > input[type="checkbox"] {
+} */
+/* .c-cb > input[type="checkbox"] {
   -webkit-font-smoothing: antialiased;
   cursor: pointer;
   margin: 0;
   opacity: 0;
   position: absolute;
   z-index: 1;
-}
+} */
 .c-cb > label {
   cursor: pointer;
   display: inline-block;
@@ -266,13 +266,13 @@ body {
 }
 .c-cb > label::before {
   background: transparent;
-  border: 2px solid currentColor;
+  /* border: 2px solid currentColor; */
   content: "";
   position: absolute;
 }
 .c-cb > input[type="checkbox"]:focus-visible + label::before {
   border-width: 4px;
-  outline: 3px dashed #228bec;
+  outline: 3px solid #ec1a0b;
 }
 .c-cb > label::after {
   background: transparent;
@@ -289,9 +289,9 @@ body {
   transform: rotate(-45deg);
   width: 18px;
 }
-.c-cb > input[type="checkbox"]:checked + label::after {
+/* .c-cb > input[type="checkbox"]:checked + label::after {
   opacity: 1;
-}
+} */
 /* Dropdown container */
 .dropdown {
   position: relative;
@@ -345,4 +345,17 @@ body {
   font-size: 1.8rem;
   font-weight: 500;
 }
+
+.gradeANDcrdhr1 {
+  display: flex;
+  gap: 1.5rem; /* space between items */
+  align-items: center;
+
+  font-size: 10rem; /* bigger text */
+  font-weight: 900; /* bold but modern */
+  letter-spacing: 0.02em;
+
+  background: #f7f7f7;
+}
+
 /* End checkbox styles */

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { use, useState } from "react";
 
 function Form(props) {
   const [entry, setEntry] = useState("");
   const [grade, setGrade] = useState("Grade");
   const [crdhr, setCrdhr] = useState("Credit");
+  const [errPlacehl, seterrPlacehl] = useState("");
 
   function handleChange(event) {
     setEntry(event.target.value);
@@ -11,7 +12,10 @@ function Form(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (entry.replace(/\s/g, "").length !== 0) {
+    if (crdhr === "Credit" || grade === "Grade") {
+      seterrPlacehl("Select Both CRDHR & Grade");
+      return;
+    } else if (entry.replace(/\s/g, "").length !== 0) {
       props.onSubmit(entry, crdhr, grade);
     } else {
       props.onSubmit("Course", crdhr, grade);
@@ -37,6 +41,7 @@ function Form(props) {
           autoComplete="off"
           value={entry}
           onChange={handleChange}
+          placeholder={errPlacehl}
         />
 
         <div className="dropdown small">

@@ -48,14 +48,18 @@ function Course(props) {
   const viewTemplate = (
     <div className="stack-small">
       <div className="c-cb">
-        <input
+        {/* <input
           id={props.id}
           type="checkbox"
           defaultChecked={props.completed}
           onChange={() => props.toggleCourse(props.id)}
-        />
-        <label className="todo-label" htmlFor={props.id}>
+        /> */}
+        <label className="todo-label gradeANDcrdhr1" htmlFor={props.id}>
           {props.name}
+        </label>
+
+        <label className="todo-label gradeANDcrdhr1" htmlFor={props.id}>
+          Grade :{props.grade} CreditHour : {props.creditHour}
         </label>
       </div>
       <div className="btn-group">
