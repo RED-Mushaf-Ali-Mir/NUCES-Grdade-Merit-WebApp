@@ -82,7 +82,7 @@ function Form(props) {
         </button>
       </form>
       <div className="calculate-Btn">
-        <button className="btn  btn__lg">Calculate GPA</button>
+        <button className="btn btn__gpaCal btn__lg">Calculate GPA</button>
       </div>
     </>
   );

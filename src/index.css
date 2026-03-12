@@ -101,6 +101,10 @@ body {
   background-color: black;
   color: white;
 }
+.btn__gpaCal {
+  background-color: rgb(16, 77, 153);
+  color: white;
+}
 .btn-group {
   display: flex;
   justify-content: space-between;
