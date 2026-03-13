@@ -91,7 +91,7 @@ function App(props) {
 
   return (
     <div className="todoapp stack-large">
-      <h1>NUCES Grade Calculator</h1>
+      <h1>FAST NUCES GPA Calculator</h1>
       <Form onSubmit={onSubmit} calculateGPA={calculateGPA} />
 
       {/* <div className="filters btn-group stack-exception">
@@ -111,21 +111,19 @@ function App(props) {
       </ul>
       <div className="creator-info">
         <a
-          href="https://github.com/YOUR_USERNAME"
+          href="https://github.com/RED-Mushaf-Ali-Mir"
           target="_blank"
           rel="noopener noreferrer"
         >
-          GITHUB
+          @GITHUB
         </a>
 
-        <h4 className="creator-name">Mushaf Ali Mir</h4>
-
         <a
-          href="https://linkedin.com/in/YOUR_USERNAME"
+          href="https://www.linkedin.com/in/mushaf-ali-mir-6a32b6295?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          LinkedIn
+          @LinkedIn
         </a>
       </div>
     </div>

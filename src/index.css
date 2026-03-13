@@ -361,5 +361,40 @@ body {
 
   background: #f7f7f7;
 }
+.creator-info {
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+  color: #1e44c2;
+}
+.creator-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 
+.creator-info a:first-child {
+  flex: 1;
+  text-align: left;
+}
+
+.creator-name {
+  flex: 1;
+  text-align: center;
+}
+
+.creator-info a:last-child {
+  flex: 1;
+  text-align: right;
+}
+
+/* optional link styling */
+.creator-info a {
+  text-decoration: none;
+  color: rgb(7, 22, 121);
+  font-weight: 500;
+}
+
+.creator-info a:hover {
+  text-decoration: underline;
+}
 /* End checkbox styles */
