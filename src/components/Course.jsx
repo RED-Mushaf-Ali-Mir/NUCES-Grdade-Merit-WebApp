@@ -2,7 +2,20 @@ import { useState } from "react";
 import Credits from "./Credit";
 import Grades from "./Grades";
 
-const grades = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F"];
+const grades = [
+  "A+",
+  "A",
+  "A-",
+  "B+",
+  "B",
+  "B-",
+  "C+",
+  "C",
+  "C-",
+  "D+",
+  "D",
+  "F",
+];
 const credits = ["3", "2", "1"];
 
 function Course(props) {

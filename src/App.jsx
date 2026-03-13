@@ -1,11 +1,11 @@
 import Course from "./components/Course";
 import Form from "./components/Form";
-import FilterButton from "./components/FilterButton";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 
 function App(props) {
   const [courses, setCourses] = useState(props.courses);
+  const [gpa, setGpa] = useState("");
 
   function editCourse(name, id, newGrade, newCredit) {
     const editedCourse = courses.map((course) => {
@@ -58,19 +58,48 @@ function App(props) {
       toggleCourse={toggleCourse}
       deleteCourse={deleteCourse}
       editCourse={editCourse}
+      gradePoint={0}
     />
   ));
+
+  function calculateGPA() {
+    const gradePointaded = courses?.map((course) => {
+      if (course.grade === "A+") return { ...course, gradePoint: 4 };
+      else if (course.grade === "A") return { ...course, gradePoint: 4 };
+      else if (course.grade === "A-") return { ...course, gradePoint: 3.67 };
+      else if (course.grade === "B+") return { ...course, gradePoint: 3.33 };
+      else if (course.grade === "B") return { ...course, gradePoint: 3 };
+      else if (course.grade === "B-") return { ...course, gradePoint: 2.67 };
+      else if (course.grade === "C+") return { ...course, gradePoint: 2.33 };
+      else if (course.grade === "C") return { ...course, gradePoint: 2 };
+      else if (course.grade === "C-") return { ...course, gradePoint: 1.67 };
+      else if (course.grade === "D+") return { ...course, gradePoint: 1.33 };
+      else if (course.grade === "D") return { ...course, gradePoint: 1 };
+      else if (course.grade === "F") return { ...course, gradePoint: 0 };
+    });
+
+    let totalPoints = 0;
+    let totalCredits = 0;
+
+    gradePointaded.forEach((course) => {
+      totalPoints += course.gradePoint * Number(course.creditHour);
+      totalCredits += Number(course.creditHour);
+    });
+
+    setGpa((totalPoints / totalCredits).toFixed(2));
+  }
+
   return (
     <div className="todoapp stack-large">
       <h1>NUCES Grade Calculator</h1>
-      <Form onSubmit={onSubmit} />
+      <Form onSubmit={onSubmit} calculateGPA={calculateGPA} />
 
       {/* <div className="filters btn-group stack-exception">
         <FilterButton />
         <FilterButton />
         <FilterButton />
       </div> */}
-      <h2 id="list-heading">{`GPA : ${CourseList.length}`}</h2>
+      <h2 id="list-heading">{`GPA : ${gpa}`}</h2>
       <h2 id="list-heading">{`Course Added ${CourseList.length}`}</h2>
 
       <ul
@@ -80,6 +109,25 @@ function App(props) {
       >
         {CourseList}
       </ul>
+      <div className="creator-info">
+        <a
+          href="https://github.com/YOUR_USERNAME"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GITHUB
+        </a>
+
+        <h4 className="creator-name">Mushaf Ali Mir</h4>
+
+        <a
+          href="https://linkedin.com/in/YOUR_USERNAME"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+      </div>
     </div>
   );
 }

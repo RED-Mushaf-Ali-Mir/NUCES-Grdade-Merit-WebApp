@@ -2,7 +2,20 @@ import { use, useState } from "react";
 import Grades from "./Grades";
 import Credits from "./Credit";
 
-const grades = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F"];
+const grades = [
+  "A+",
+  "A",
+  "A-",
+  "B+",
+  "B",
+  "B-",
+  "C+",
+  "C",
+  "C-",
+  "D+",
+  "D",
+  "F",
+];
 const credits = ["3", "2", "1"];
 
 function Form(props) {
@@ -82,7 +95,12 @@ function Form(props) {
         </button>
       </form>
       <div className="calculate-Btn">
-        <button className="btn btn__gpaCal btn__lg">Calculate GPA</button>
+        <button
+          onClick={() => props.calculateGPA()}
+          className="btn btn__gpaCal btn__lg"
+        >
+          Calculate GPA
+        </button>
       </div>
     </>
   );
